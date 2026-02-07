@@ -1,0 +1,202 @@
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* Cinematic slow zoom effect could go here if requested, keeping it static but high quality for now */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.2) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.3s;
+}
+
+.hero-headline .highlight {
+    font-style: italic;
+    color: #fff;
+    /* Keep white for elegance, maybe subtle gold tint? */
+}
+
+.hero-subhead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    max-width: 500px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.7s;
+}
+
+.cta-primary {
+    background-color: var(--color-primary);
+    color: #000;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.cta-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+.micro-interaction {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.9s;
+}
+
+.micro-label {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    color: var(--color-text-muted);
+}
+
+.micro-options {
+    display: flex;
+    gap: 12px;
+}
+
+.option-btn {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+.option-btn:hover,
+.option-btn:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 60px;
+        align-items: flex-start;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-text {
+        text-align: center;
+        padding-top: 40px;
+        margin: 0 auto;
+    }
+
+    .hero-headline {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-subhead {
+        font-size: 1rem;
+        margin: 0 auto 30px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .micro-interaction {
+        margin: 0 auto;
+    }
+
+    .hero-overlay {
+        background: linear-gradient(180deg,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.9) 100%);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-headline {
+        font-size: 2.2rem;
+    }
+
+    .cta-primary {
+        width: 100%;
+        padding: 14px 24px;
+    }
+}
