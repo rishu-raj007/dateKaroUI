@@ -61,7 +61,7 @@ const Timeline = () => {
     };
 
     const handleLike = async (userId) => {
-        if (currentUser && userId === currentUser.userId) return; // Can't like yourself
+        if (currentUser && userId === (currentUser.userId || currentUser._id)) return; // Can't like yourself
         try {
             const result = await likeProfile(userId);
             if (result.isMatch) {
@@ -74,7 +74,7 @@ const Timeline = () => {
     };
 
     const handleDislike = async (userId) => {
-        if (currentUser && userId === currentUser.userId) {
+        if (currentUser && userId === (currentUser.userId || currentUser._id)) {
             removeTopProfile();
             return;
         }
@@ -87,7 +87,7 @@ const Timeline = () => {
     };
 
     const handleSuperLike = async (userId) => {
-        if (currentUser && userId === currentUser.userId) return;
+        if (currentUser && userId === (currentUser.userId || currentUser._id)) return;
         try {
             const result = await superLikeProfile(userId);
             if (result.isMatch) {
@@ -100,7 +100,7 @@ const Timeline = () => {
     };
 
     const handleSave = async (userId) => {
-        if (currentUser && userId === currentUser.userId) return;
+        if (currentUser && userId === (currentUser.userId || currentUser._id)) return;
         try {
             await saveProfile(userId);
             alert("Profile Bookmarked! 🔖");

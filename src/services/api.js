@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5050/api';
 
 const api = axios.create({
     baseURL: API_URL,
@@ -71,6 +71,35 @@ export const profileService = {
         });
         return data;
     }
+};
+
+export const interactionService = {
+    async likeUser(userId) {
+        const { data } = await api.post(`/interactions/like/${userId}`);
+        return data; // { message, isMatch }
+    },
+
+    async getLikedProfiles() {
+        const { data } = await api.get('/interactions/liked-profiles');
+        return data;
+    },
+
+    async getMatches() {
+        const { data } = await api.get('/interactions/matches');
+        return data;
+    },
+};
+
+export const messageService = {
+    async getMessages(matchId) {
+        const { data } = await api.get(`/messages/${matchId}`);
+        return data;
+    },
+
+    async sendMessage(receiverId, message) {
+        const { data } = await api.post('/messages', { receiverId, message });
+        return data;
+    },
 };
 
 export default api;

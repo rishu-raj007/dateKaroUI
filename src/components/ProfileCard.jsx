@@ -37,9 +37,10 @@ const ProfileCard = ({ profile, onLike, onDislike, onSuperLike, onSave, onChat }
     const handleExit = (direction) => {
         setExitDirection(direction);
         setTimeout(() => {
-            if (direction === 'right') onLike(profile.userId);
-            if (direction === 'left') onDislike(profile.userId);
-            if (direction === 'up') onSuperLike(profile.userId);
+            const id = profile.userId || profile._id;
+            if (direction === 'right') onLike(id);
+            if (direction === 'left') onDislike(id);
+            if (direction === 'up') onSuperLike(id);
         }, 300);
     };
 
@@ -132,19 +133,19 @@ const ProfileCard = ({ profile, onLike, onDislike, onSuperLike, onSave, onChat }
                         </button>
                     ) : (
                         <>
-                            <button className="action-btn dislike" onClick={() => handleExit('left')}>
+                            <button className="action-btn dislike" onClick={(e) => { e.stopPropagation(); handleExit('left'); }}>
                                 <X size={24} />
                             </button>
-                            <button className="action-btn save" onClick={() => onSave(profile.userId)}>
+                            <button className="action-btn save" onClick={(e) => { e.stopPropagation(); onSave(profile.userId || profile._id); }}>
                                 <Bookmark size={20} />
                             </button>
-                            <button className="action-btn super" onClick={() => handleExit('up')}>
+                            <button className="action-btn super" onClick={(e) => { e.stopPropagation(); handleExit('up'); }}>
                                 <Star size={24} fill="currentColor" />
                             </button>
-                            <button className="action-btn chat" onClick={() => onChat(profile.userId)}>
+                            <button className="action-btn chat" onClick={(e) => { e.stopPropagation(); onChat(profile.userId || profile._id); }}>
                                 <MessageCircle size={24} />
                             </button>
-                            <button className="action-btn like" onClick={() => handleExit('right')}>
+                            <button className="action-btn like" onClick={(e) => { e.stopPropagation(); handleExit('right'); }}>
                                 <Heart size={24} fill="currentColor" />
                             </button>
                         </>

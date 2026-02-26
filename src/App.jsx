@@ -10,6 +10,8 @@ import SignUp from './pages/SignUp';
 import ProfilePage from './pages/ProfilePage';
 import ProfileDashboard from './pages/ProfileDashboard';
 import Timeline from './pages/Timeline';
+import LikedProfiles from './pages/LikedProfiles';
+import ChatPage from './pages/ChatPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -54,6 +56,30 @@ function App() {
             element={
               <ProtectedRoute>
                 <Timeline />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/liked-profiles"
+            element={
+              <ProtectedRoute>
+                <LikedProfiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <ChatPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chat/:matchId"
+            element={
+              <ProtectedRoute>
+                <ChatPage />
               </ProtectedRoute>
             }
           />

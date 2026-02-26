@@ -44,6 +44,8 @@ const Header = () => {
           {isLoggedIn ? (
             <>
               <Link to="/timeline" className="highlight-link">Discover</Link>
+              <Link to="/liked-profiles" className="nav-item">Likes</Link>
+              <Link to="/chat" className="nav-item">Messages</Link>
               <Link to="/dashboard" className="signin-btn">My Profile</Link>
             </>
           ) : (
