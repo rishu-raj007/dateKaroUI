@@ -5,7 +5,7 @@ import { Send, ArrowLeft, MessageSquareHeart } from 'lucide-react';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 
-const SOCKET_URL = 'http://localhost:5050';
+const SOCKET_URL = 'https://datekaroserver.onrender.com/';
 
 const ChatWindow = ({ matchId, currentUserId, currentMatch, refreshMatches }) => {
     const [messages, setMessages] = useState([]);
